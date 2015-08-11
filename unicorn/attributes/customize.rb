@@ -10,8 +10,8 @@
 #
 #normal[:unicorn][:timeout] = 30
 
-Chef::Log.info(deploy.inspect)
-
-if node[:deploy][@application][:worker_processes]
-  default[:unicorn][:worker_processes] = node[:deploy][@application][:worker_processes]
+deploy.keys do |application|
+  if node[:deploy][application][:worker_processes]
+    default[:unicorn][:worker_processes] = node[:deploy][application][:worker_processes]
+  end
 end
