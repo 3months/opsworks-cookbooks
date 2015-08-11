@@ -10,6 +10,8 @@
 #
 #normal[:unicorn][:timeout] = 30
 
-if node[:deploy][:draft][:worker_processes]
-  default[:unicorn][:worker_processes] = node[:deploy][:draft][:worker_processes]
+application = params[:application]
+
+if node[:deploy][application][:worker_processes]
+  default[:unicorn][:worker_processes] = node[:deploy][application][:worker_processes]
 end
