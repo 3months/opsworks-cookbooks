@@ -10,7 +10,7 @@
 #
 #normal[:unicorn][:timeout] = 30
 
-deploy.keys do |application|
+deploy.keys.each do |application|
   if node[:deploy][application][:worker_processes]
     default[:unicorn][:worker_processes] = node[:deploy][application][:worker_processes]
   end
